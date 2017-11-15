@@ -34,12 +34,12 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return 200;
+        return 20;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return random.nextInt(50) < 25 ? SHORT : LONG;
+        return random.nextInt(2) < 1 ? SHORT : LONG;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
