@@ -35,11 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/card"
-            app:fastScrollEnabled="true"
-            app:fastScrollHorizontalTrackDrawable="@drawable/fst_scroll_line"
-            app:fastScrollHorizontalThumbDrawable="@drawable/fst_scroll_thumb"
-            app:fastScrollVerticalTrackDrawable="@drawable/fst_scroll_line"
-            app:fastScrollVerticalThumbDrawable="@drawable/fst_scroll_thumb" />
+            android:scrollbars="vertical" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

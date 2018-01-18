@@ -17,6 +17,15 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.ViewHolder
     private static final int SHORT = 1;
     private static final int LONG = 2;
 
+    private int[] types;
+
+    public RandomAdapter() {
+        types = new int[getItemCount()];
+        for (int i = 0; i < getItemCount(); i++) {
+            types[i] = random.nextInt(50) < 25 ? SHORT : LONG;
+        }
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == LONG) {
@@ -39,7 +48,7 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.ViewHolder
 
     @Override
     public int getItemViewType(int position) {
-        return random.nextInt(50) < 25 ? SHORT : LONG;
+        return types[position];
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
