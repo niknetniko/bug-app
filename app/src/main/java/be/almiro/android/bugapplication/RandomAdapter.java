@@ -5,25 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.Random;
+import java.util.List;
 
 /**
  * @author Niko Strijbol
  */
 public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.ViewHolder> {
 
-    private Random random = new Random();
-
     private static final int SHORT = 1;
     private static final int LONG = 2;
 
-    private int[] types;
+    private List<Integer> types;
 
-    public RandomAdapter() {
-        types = new int[getItemCount()];
-        for (int i = 0; i < getItemCount(); i++) {
-            types[i] = random.nextInt(50) < 25 ? SHORT : LONG;
-        }
+    public RandomAdapter(List<Integer> types) {
+        this.types = types;
     }
 
     @Override
@@ -43,12 +38,12 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return 200;
+        return types.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        return types[position];
+        return types.get(position);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
