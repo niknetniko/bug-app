@@ -1,6 +1,7 @@
 package be.almiro.android.bugapplication;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,18 +18,19 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.ViewHolder
     private static final int SHORT = 1;
     private static final int LONG = 2;
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == LONG) {
             return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card, parent, false));
         } else if (viewType == SHORT) {
             return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_big, parent, false));
         }
-        return null;
+        throw new IllegalArgumentException("Type not known: " + viewType);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //nothing
     }
 
